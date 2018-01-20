@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="CollectexDB">
+  <DataContextMoniker Name="/CollectexDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="6198ea96-33f8-4bfe-b869-88823b2b036e" absoluteBounds="0.875, 2.625, 2, 3.1170068359375">
+      <DataClassMoniker Name="/CollectexDBDataContext/PaymentsScheduled" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3ddfafad-ce49-4d89-8c90-78a2b8c89dbc" absoluteBounds="0.88999999999999968, 3.085, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0e6fa0ec-623e-4dfa-b2d8-1effc5d18daa" absoluteBounds="5, 1.875, 2, 5.0400211588541657">
+      <DataClassMoniker Name="/CollectexDBDataContext/PaymentArrangement" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d9622da4-4603-49a9-99aa-efc73ad16ee9" absoluteBounds="5.015, 2.335, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5 : 4.18350341796875); (2.875 : 4.18350341796875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CollectexDBDataContext/PaymentArrangement/PaymentArrangement_PaymentsScheduled" />
+      <nodes>
+        <classShapeMoniker Id="0e6fa0ec-623e-4dfa-b2d8-1effc5d18daa" />
+        <classShapeMoniker Id="6198ea96-33f8-4bfe-b869-88823b2b036e" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="12be8d01-d879-45c1-990a-012c30620a37" absoluteBounds="2.375, 0.5, 1.375, 1.5785953776041666">
+      <DataClassMoniker Name="/CollectexDBDataContext/Log" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e175f6a4-c75a-4f65-9b7d-2186d623017a" absoluteBounds="2.39, 0.96, 1.3450000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.625 : 2.625); (2.625 : 2.07859537760417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CollectexDBDataContext/PaymentsScheduled/PaymentsScheduled_Log" />
+      <nodes>
+        <classShapeMoniker Id="6198ea96-33f8-4bfe-b869-88823b2b036e" />
+        <classShapeMoniker Id="12be8d01-d879-45c1-990a-012c30620a37" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

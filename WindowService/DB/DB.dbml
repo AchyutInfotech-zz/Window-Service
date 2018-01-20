@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Collectex" Class="CollectexDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=Tanzeel,49170;Initial Catalog=Collectex;User ID=sa" SettingsObjectName="WindowService.Properties.Settings" SettingsPropertyName="CollectexConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.PaymentsScheduled" Member="PaymentsScheduleds">
+    <Type Name="PaymentsScheduled">
+      <Column Name="PaymentScheduledID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PaymentArrangementID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateDue" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ScheduledPayment" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="TotalScheduled" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="FcastBalance" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Allocated" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="TotalDue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="TimeStamp" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Column Name="ProcesseFund" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RequestSent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GotResponse" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="PaymentsScheduled_Log" Member="Logs" ThisKey="PaymentScheduledID" OtherKey="ScheduleID" Type="Log" />
+      <Association Name="PaymentArrangement_PaymentsScheduled" Member="PaymentArrangement" ThisKey="PaymentArrangementID" OtherKey="PaymentArrangementID" Type="PaymentArrangement" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PaymentArrangements" Member="PaymentArrangements">
+    <Type Name="PaymentArrangement">
+      <Column Name="PaymentArrangementID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DebtorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentPeriodID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Days" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="SendLetterOrSMS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LetterOrSMS" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="SendLetterOrSMSNoOfDayPrior" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="CloseAccountOnCompletion" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PaymentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FirstChequeNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BankAccount" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BankName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Branch" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BSBOrRouting" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Drawer" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FirstPaymentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InitialPaymentPromised" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DefaultPaymentAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SettleForLess" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ArrangementLetterDaysPrior" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="ArrangementLetter" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TimeStamp" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Association Name="PaymentArrangement_PaymentsScheduled" Member="PaymentsScheduleds" ThisKey="PaymentArrangementID" OtherKey="PaymentArrangementID" Type="PaymentsScheduled" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Logs" Member="Logs">
+    <Type Name="Log">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DebtorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Response" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ScheduleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PaymentsScheduled_Log" Member="PaymentsScheduled" ThisKey="ScheduleID" OtherKey="PaymentScheduledID" Type="PaymentsScheduled" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
